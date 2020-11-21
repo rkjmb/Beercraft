@@ -5,6 +5,7 @@ import config from './config';
 
 import Beerbrand from './components/Beerbrand';
 import Pagination from './components/Pagination';
+import Search from './components/Search';
 import './App.css';
 
 const App = () => {
@@ -48,16 +49,14 @@ const App = () => {
         <h1>
           Beercraft
         </h1>
-        <input placeholder={"Search by beer name"} onChange={(e) => setsearchText(e.target.value)} value={searchText} />
+        <Search setsearchText={setsearchText} />
         <Pagination setpage={setpage} page={page} totalPages={totalPages} />
       </div>
       {pageData?.length ?
         <div className='main'>
           {pageData.map((berrBrand, index) => <Beerbrand src={images[(index % images.length)]?.image} key={berrBrand.id} berrBrand={berrBrand} />)}
         </div>
-        : searchText ?
-          <div className="noResult"><h3>{`No Beer found by the name "${searchText}"`}</h3></div> :
-          <div className="noResult"><h3>Something went wrong</h3></div>
+        : searchText && <div className="noResult"><h3>{`No Beer found by the name "${searchText}"`}</h3></div>
       }
     </div >
   );

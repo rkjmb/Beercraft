@@ -2,15 +2,19 @@ import React from 'react'
 
 const Beerbrand = ({ src, berrBrand: { abv, ibu, name, style, ounces } }) => {
     return (
-        <div style={{ display: 'flex', flexDirection: 'column', border: '1px solid' }}>
-            <div>
+        <div className='beerbrand'>
+            <div className='beerbrand--image'>
                 <img className='image1' src={src} alt={'Beer image'} />
             </div>
-            <div style={{ backgroundColor: '#1976D2', color: 'white' }}>{name}</div>
-            <span>ABV:{abv ? abv : ' N/A'}</span>
-            <span>IBU:{ibu ? ibu : ' N/A'}</span>
-            <span>STYLE:{style ? style : ' N/A'}</span>
-            <span>OUNCES:{ounces ? ounces : ' N/A'}</span>
+            <div className="beerbrand-info">
+                <div className="beerbrand-name">{name}</div>
+                <div className="beerbrand-subInfo">
+                    <div><span className='beerbrand-label'>ABV</span> {abv ? abv : ' N/A'}</div>
+                    <div><span className='beerbrand-label'>IBU</span> {ibu ? ibu : ' N/A'}</div>
+                    <div><span className='beerbrand-label'>STYLE</span> {style ? style : ' N/A'}</div>
+                    <div><span className='beerbrand-label'>OUNCES</span> {ounces ? ounces : ' N/A'}</div>
+                </div>
+            </div>
         </div >
     )
 }
